@@ -21,6 +21,12 @@ const Sidebar = () => {
         width="200px"
         height="100%"
         bg="gray.200">
+          <IconButton
+            mt="10px"
+            ml="140px"
+            icon={isOpen ? <ArrowLeftIcon /> : <ArrowRightIcon />}
+            onClick={isOpen ? onClose : onOpen}
+          />
       </Box>
     </div>
   )
