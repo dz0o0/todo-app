@@ -13,6 +13,15 @@ const Sidebar = () => {
         icon={isOpen ? <ArrowLeftIcon /> : <ArrowRightIcon />}
         onClick={isOpen ? onClose : onOpen}
       />
+      <Box
+        display={isOpen ? 'block' : 'none'}
+        position="fixed"
+        top="0"
+        left="0"
+        width="200px"
+        height="100%"
+        bg="gray.200">
+      </Box>
     </div>
   )
 }
