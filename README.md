@@ -2,7 +2,7 @@
 ## 特徴
 
 
-#使用技術
+# 使用技術
 - Next.js(14.2.4)
 - React
 - chakra UI
