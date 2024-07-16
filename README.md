@@ -3,7 +3,7 @@
 
 
 ## 使用技術
-- Next.js(14.2.4)
+- Next.js(14.2.5)
 - React
 - chakra UI
 デジビルで使用している為
