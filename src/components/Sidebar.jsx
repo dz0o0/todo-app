@@ -1,35 +1,74 @@
 "use client";
 
-import React from 'react';
-import { Button,IconButton,Box,useDisclosure } from '@chakra-ui/react'
+import {React,useState} from 'react';
+import { Button,IconButton,Box,useDisclosure,Text,Collapse,VStack,Link } from '@chakra-ui/react'
 import { ArrowLeftIcon,ArrowRightIcon } from '@chakra-ui/icons'
 
 const Sidebar = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    const [showServices, setShowServices] = useState(false);
 
-  return (
-    <div>
-      <IconButton
-        icon={isOpen ? <ArrowLeftIcon /> : <ArrowRightIcon />}
-        onClick={isOpen ? onClose : onOpen}
-      />
-      <Box
-        display={isOpen ? 'block' : 'none'}
-        position="fixed"
-        top="0"
-        left="0"
-        width="200px"
-        height="100%"
-        bg="gray.200">
-          <IconButton
-            mt="10px"
-            ml="140px"
-            icon={isOpen ? <ArrowLeftIcon /> : <ArrowRightIcon />}
-            onClick={isOpen ? onClose : onOpen}
-          />
-      </Box>
-    </div>
-  )
+    const toggleServices = () => {
+        setShowServices(!showServices);
+    };
+    return (
+        <div>
+            <IconButton
+                mt="10px"
+                icon={isOpen ? <ArrowLeftIcon /> : <ArrowRightIcon />}
+                onClick={isOpen ? onClose : onOpen}
+            />
+            <Box
+                display={isOpen ? 'block' : 'none'}
+                position="fixed"
+                top="0"
+                left="0"
+                width="200px"
+                height="100%"
+                bg="gray.200">
+                <Box display="flex" mt="10px" alignItems="center" w="100%">
+                    <Text fontSize="xl" fontWeight="bold" ml="4">TodoList</Text>
+                    <IconButton
+                        ml="7"
+                        icon={isOpen ? <ArrowLeftIcon /> : <ArrowRightIcon />}
+                        onClick={isOpen ? onClose : onOpen}
+                    />
+                </Box>
+                <VStack align="start" spacing="4" mt="4">
+                    <Box
+                        onClick={toggleServices}
+                        _hover={{ textDecor: "none", bg: "gray.300" }}
+                        p="4"
+                        w="100%"
+                        style={{ cursor: "pointer" }}
+                    >
+                        ジャンル
+                    </Box>
+                    <Collapse in={showServices} animateOpacity>
+                        <VStack spacing="4" pl="5">
+                            <Link onClick={() => router.push('/')} _hover={{ textDecor: "none", bg: "gray.300" }} p="2" w="100%">
+                            家事
+                            </Link>
+                            <Link onClick={() => router.push('/')} _hover={{ textDecor: "none", bg: "gray.300" }} p="2" w="100%">
+                            仕事
+                            </Link>
+                            <Link onClick={() => router.push('/')} _hover={{ textDecor: "none", bg: "gray.300" }} p="2" w="100%">
+                            勉強
+                            </Link>
+                        </VStack>
+                    </Collapse>
+                    <Link
+                        onClick={() => router.push('/contact')}
+                        _hover={{ textDecor: "none", bg: "gray.300" }}
+                        p="4"
+                        w="100%"
+                    >
+                        お問い合わせ
+                    </Link>
+                </VStack>
+            </Box>
+        </div>
+    );
 }
 
 export default Sidebar;
