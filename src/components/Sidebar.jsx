@@ -1,8 +1,8 @@
 "use client";
 
-import {React,useState} from 'react';
-import { Button,IconButton,Box,useDisclosure,Text,Collapse,VStack,Link } from '@chakra-ui/react'
-import { ArrowLeftIcon,ArrowRightIcon } from '@chakra-ui/icons'
+import React, { useState } from 'react';
+import { IconButton, Box, useDisclosure, Text, Collapse, VStack, Link } from '@chakra-ui/react';
+import { ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons';
 
 const Sidebar = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -11,6 +11,7 @@ const Sidebar = () => {
     const toggleServices = () => {
         setShowServices(!showServices);
     };
+
     return (
         <div>
             <IconButton
@@ -18,6 +19,7 @@ const Sidebar = () => {
                 icon={isOpen ? <ArrowLeftIcon /> : <ArrowRightIcon />}
                 onClick={isOpen ? onClose : onOpen}
             />
+
             <Box
                 display={isOpen ? 'block' : 'none'}
                 position="fixed"
@@ -25,7 +27,8 @@ const Sidebar = () => {
                 left="0"
                 width="200px"
                 height="100%"
-                bg="gray.200">
+                bg="gray.200"
+            >
                 <Box display="flex" mt="10px" alignItems="center" w="100%">
                     <Text fontSize="xl" fontWeight="bold" ml="4">TodoList</Text>
                     <IconButton
@@ -46,19 +49,19 @@ const Sidebar = () => {
                     </Box>
                     <Collapse in={showServices} animateOpacity>
                         <VStack spacing="4" pl="5">
-                            <Link onClick={() => router.push('/')} _hover={{ textDecor: "none", bg: "gray.300" }} p="2" w="100%">
+                            <Link href="/" _hover={{ textDecor: "none", bg: "gray.300" }} p="2" w="100%">
                             家事
                             </Link>
-                            <Link onClick={() => router.push('/')} _hover={{ textDecor: "none", bg: "gray.300" }} p="2" w="100%">
+                            <Link href="/work" _hover={{ textDecor: "none", bg: "gray.300" }} p="2" w="100%">
                             仕事
                             </Link>
-                            <Link onClick={() => router.push('/')} _hover={{ textDecor: "none", bg: "gray.300" }} p="2" w="100%">
+                            <Link href="/study" _hover={{ textDecor: "none", bg: "gray.300" }} p="2" w="100%">
                             勉強
                             </Link>
                         </VStack>
                     </Collapse>
                     <Link
-                        onClick={() => router.push('/contact')}
+                        href="/contact"
                         _hover={{ textDecor: "none", bg: "gray.300" }}
                         p="4"
                         w="100%"
