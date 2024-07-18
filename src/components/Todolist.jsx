@@ -1,22 +1,23 @@
 "use client";
 
-import {React,useState} from 'react';
+import React, { useState } from 'react';
 import { ChakraProvider } from '@chakra-ui/react';
-import { HStack,Input,Button,List,ListItem,Checkbox } from '@chakra-ui/react';
+import { HStack, Input, Button, List, ListItem, Checkbox } from '@chakra-ui/react';
 
 const Todolist = () => {
-    const [task, setTask] = useState([]);
+    const [tasks, setTasks] = useState([]);
     const [taskInput, setTaskInput] = useState('');
 
     const handleAddTask = () => {
         if (taskInput.trim() !== '') {
-            setTask([...task, { text: taskInput, completed: false }]);
+            setTasks([...tasks, { text: taskInput, completed: false }]);
         }
         setTaskInput('');
     };
 
-    const handleDeleteTask = () => {
-        
+    const handleDeleteTask = (index) => {
+        const newTasks = tasks.filter((_, taskIndex) => taskIndex !== index);
+        setTasks(newTasks);
     };
 
     return (
@@ -31,17 +32,17 @@ const Todolist = () => {
             </HStack>
 
             <List spacing={3} width="100%">
-                {task.map((task, index) => (
-                <ListItem key={index}>
-                    <HStack>
-                        <Checkbox
-                            isChecked={task.completed}
-                            onClick={handleDeleteTask()}
-                        >
-                            {task.text}
-                        </Checkbox>
-                    </HStack>
-                </ListItem>
+                {tasks.map((task, index) => (
+                    <ListItem key={index}>
+                        <HStack>
+                            <Checkbox
+                                isChecked={task.completed}
+                                onChange={() => handleDeleteTask(index)}
+                            >
+                                {task.text}
+                            </Checkbox>
+                        </HStack>
+                    </ListItem>
                 ))}
             </List>
         </>

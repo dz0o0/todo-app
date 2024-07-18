@@ -5,7 +5,7 @@ import { IconButton, Box, useDisclosure, Text, Collapse, VStack, Link } from '@c
 import { ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons';
 
 const Sidebar = () => {
-    const { isOpen, onOpen, onClose } = useDisclosure();
+    const { isOpen, onOpen, onClose } = useDisclosure({ defaultIsOpen: true });
     const [showServices, setShowServices] = useState(false);
 
     const toggleServices = () => {
