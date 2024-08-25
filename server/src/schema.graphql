@@ -1,0 +1,42 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Task {
+  """ID of the task"""
+  id: Int!
+
+  """Name of the task"""
+  taskName: String!
+
+  """Completion status of the task"""
+  completed: Boolean!
+}
+
+type Query {
+  tasks: [Task!]!
+  task(id: Int!): Task!
+}
+
+type Mutation {
+  createTask(createTaskInput: CreateTaskInput!): Task!
+  updateTask(updateTaskInput: UpdateTaskInput!): Task!
+  removeTask(id: Int!): Task!
+}
+
+input CreateTaskInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+
+  """Name of the task"""
+  taskName: String!
+}
+
+input UpdateTaskInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+
+  """Name of the task"""
+  taskName: String
+  id: Int!
+}
